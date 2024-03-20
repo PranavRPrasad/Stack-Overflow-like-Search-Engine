@@ -19,7 +19,7 @@
 + To leverage Entity Framework Core's ability to automate model and DbContext creation, I opted for the database-first approach. This involved scaffolding the models and DbContext directly from the existing database, saving me significant development time.
 
 # Running the application
-1. Place the database in the path /var/opt/mssql/data/ inside Azure Data Studio. Kindly follow this link for smooth setup - https://sqlblog.org/2020/03/15/attaching-restoring-databases-inside-a-container. Once the database is uploaded, please connect to the server. For connection, please use the following:
+1. Place the database in the path /var/opt/mssql/data/ inside Azure Data Studio. Kindly follow this link for smooth setup - https://sqlblog.org/2020/03/15/attaching-restoring-databases-inside-a-container. Refer to the "PlaceDataBase.png" screenshot in the screenshots folder. Once the database is uploaded, please connect to the server. For connection, please use the following:
     + Server: localhost
     + Username: sa (You should use the same username that you used while setup)
     + Password: dockerStrongPwd123 (You should use the same password that you used while setup)
@@ -34,11 +34,11 @@
     + Microsoft.Extensions.Configuration 7.0.0
     + Microsoft.VisualStudio.Web.CodeGeneration.Design 7.0.12
   5. If not, please install them and add them to the project.
-  6. I've added 2 indexes to the database - one for the column "Type" in the table "PostTypes" and one for the column "Name" in the table "VoteTypes". You can also check the migration files in the project folder by navigating to StackOverflowLikeWeb/Migrations/20240223114915_AddingIndexesMigration. In order to reflect these changes to the database, please open the terminal tab down in Visual Studio, navigate to the project folder StackOverflowLikeWeb and run "dotnet ef database update". Once it's done, verify these updates in Azure Data Studio.
+  6. I've added 2 indexes to the database - one for the column "Type" in the table "PostTypes" and one for the column "Name" in the table "VoteTypes". (Please refer to the "TypeIndexPostTypes.png" and "NameIndexVoteTypes.png" in the Indexes folder under Screenshots). You can also check the migration files in the project folder by navigating to StackOverflowLikeWeb/Migrations/20240223114915_AddingIndexesMigration. In order to reflect these changes to the database, please open the terminal tab down in Visual Studio, navigate to the project folder StackOverflowLikeWeb and run "dotnet ef database update". Once it's done, verify these updates in Azure Data Studio.
   7. In the menu bar of Visual Studio, navigate to "Build" and in the dropdown, click on "Clean All".
   8. Once the clean is successful, navigate to "Build" and in the dropdown, click on "Rebuild Solution" and wait for successful build.
   9. On the top-left, click on the play icon to run the project (You can also use "command + return") and wait for 2-3 seconds.
-  10. On the browser, click on "Posts" and then search for any keyword(s). For example, you can type "the difference between" and click on "Search".
+  10. On the browser, click on "Posts" and then search for any keyword(s). For example, you can type "the difference between" (Please refer to the "WhenUserClicksOnSearchAfterTypingKeyword(s).png" and "MostRelevantPosts.png" screenshotsin the Screenshots folder) and click on "Search".
   11. You'll get notified (via a push notification) for the ongoing search.
   12. Click on "OK" and wait for 3-5 seconds.
   13. The most relevant posts with the required information as mentioned in "Brief description" will be displayed.
@@ -56,6 +56,7 @@
   + The user has the options to either go to the previous page or next page or first page or last page or a page number of his or her choice.
   + The first and previous pages are disabled when the user is on page 1.
   + The next and last pages are disabled when the user is on the last page.
++ NOTE: Relevant screenshots are attached. Please check the screenshots folder. 
  
 # Assumptions
 1. I've assumed that the search keyword(s) is a string.
