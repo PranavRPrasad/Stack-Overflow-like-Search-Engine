@@ -26,7 +26,7 @@
     + Authentication Type: SQL Login
     + Trust Server Certificate: True
  2. Clone this repository into local or download ZIP.
- 3. Open Visual Studio for Mac and Click on Open and navigate to the project file "StackOverflowLikeWeb.csproj" via the path StackOverflowLike/StackOverflowLikeWeb/StackOverflowLikeWeb.csproj (wherever you've stored the project in your local).
+ 3. Open Visual Studio for Mac and Click on Open and navigate to the project file "StackOverflowLikeWeb.csproj" via the path StackOverflowLike/StackOverflowLikeWeb/StackOverflowLikeWeb.csproj (wherever you've stored the project folder in your local).
  4. In the menu bar, navigate to "Project", click on "Manage Nuget Packages..." and check if the following packages are installed:
     + Microsoft.EntityFrameworkCore.Sqlite 7.0.16
     + Microsoft.EntityFrameworkCore.SqlServer 7.0.16 
