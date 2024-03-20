@@ -35,7 +35,7 @@
     + Microsoft.VisualStudio.Web.CodeGeneration.Design 7.0.12
   5. If not, please install them and add them to the project.
   6. I've added 2 indexes to the database - one for the column "Type" in the table "PostTypes" and one for the column "Name" in the table "VoteTypes". You can also check the migration files in the project folder by navigating to StackOverflowLikeWeb/Migrations/20240223114915_AddingIndexesMigration. In order to reflect these changes to the database, please open the terminal tab down in Visual Studio, navigate to the project folder StackOverflowLikeWeb and run "dotnet ef database update". Once it's done, verify these updates in Azure Data Studio.
-  7. In the menu bar of Visual Studio, navigate to "Build" and in the dropdown, click on "Clean all".
+  7. In the menu bar of Visual Studio, navigate to "Build" and in the dropdown, click on "Clean All".
   8. Once the clean is successful, navigate to "Build" and in the dropdown, click on "Rebuild Solution" and wait for successful build.
   9. On the top-left, click on the play icon to run the project (You can also use "command + return") and wait for 2-3 seconds.
   10. On the browser, click on "Posts" and then search for any keyword(s). For example, you can type "the difference between" and click on "Search".
