@@ -19,7 +19,7 @@
 + To leverage Entity Framework Core's ability to automate model and DbContext creation, I opted for the database-first approach. This involved scaffolding the models and DbContext directly from the existing database, saving me significant development time.
 
 # Running the application
-1. Place the database in the path /var/opt/mssql/data/ inside Azure Data Studio. Kindly follow this link for smooth setup - https://sqlblog.org/2020/03/15/attaching-restoring-databases-inside-a-container. Refer to the "PlaceDataBase.png" screenshot in the screenshots folder. Once the database is uploaded, please connect to the server. For connection, please use the following:
+1. Place the database in the path /var/opt/mssql/data/ inside Azure Data Studio. Kindly follow this link for smooth setup - https://sqlblog.org/2020/03/15/attaching-restoring-databases-inside-a-container. Refer to the "PlaceDatabaseHere.png" screenshot in the screenshots folder. Once the database is uploaded, please connect to the server. For connection, please use the following:
     + Server: localhost
     + Username: sa (You should use the same username that you used while setup)
     + Password: dockerStrongPwd123 (You should use the same password that you used while setup)
