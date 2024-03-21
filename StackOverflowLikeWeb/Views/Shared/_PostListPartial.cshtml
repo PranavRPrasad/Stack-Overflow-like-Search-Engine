@@ -1,0 +1,119 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Total # of Votes</th>
+                            <th>Total # of Answers</th>
+                            <th>User</th>
+                            <th>User Reputation Score</th>
+                            <th># of User Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var post in Model.Items)
+                        {
+                            <tr>
+                                <td>@post.Title</td>
+                                <td>@(post.Body.Length > 140 ? post.Body.Substring(0, 140) + "..." : post.Body)</td>
+                                <td>@post.VoteCount</td>
+                                <td>@post.AnswerCount</td>
+                                <td>@post.UserName</td>
+                                <td>@post.UserReputation</td>
+                                <td>@post.UserBadgeCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Paging*@
+<div class="row">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+        <nav>
+            <ul class="pagination justify-content-end">
+
+                <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+                    <a class="page-link @(Model.PageIndex == 1 ? "text-muted" : "text-black")"
+                       onclick="updatePaginationLink(1)"
+                       asp-controller="Search"
+                       asp-action="SearchPage"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageNumber="1">
+                        <span>First</span>
+                    </a>
+                </li>
+
+
+                <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                    <a class="page-link @(Model.PageIndex == 1 ? "text-muted" : "text-black")"
+                       onclick="updatePaginationLink('@(Model.PageIndex - 1)')"
+                       asp-controller="Search"
+                       asp-action="SearchPage"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)">
+                        <span>Previous</span>
+                    </a>
+                </li>
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(Model.PageIndex == i ? "active" : "")">
+                        <a class="page-link text-black"
+                           onclick="updatePaginationLink('@i')"
+                           asp-controller="Search"
+                           asp-action="SearchPage"
+                           asp-route-searchQuery="@Model.SearchQuery"
+                           asp-route-pageNumber="@i">
+                            <span>@i</span>
+                        </a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                    <a class="page-link @(Model.PageIndex == Model.TotalPages ? "text-muted" : "text-black")"
+                       onclick="updatePaginationLink('@(Model.PageIndex + 1)')"
+                       asp-controller="Search"
+                       asp-action="SearchPage"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)">
+                        <span>Next</span>
+                    </a>
+
+                </li>
+                <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link @(Model.PageIndex == Model.TotalPages ? "text-muted" : "text-black")"
+                       onclick="updatePaginationLink('@Model.TotalPages')"
+                       asp-controller="Search"
+                       asp-action="SearchPage"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageNumber="@Model.TotalPages">
+                        <span>Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<form asp-controller="Search" asp-action="Index" class="form-control border-0">
+    <button type="submit" class="btn btn-primary">Back to Search</button>
+</form>
+
+<script type="text/javascript">function updatePaginationLink(pageNumber)
+{
+    var searchQuery = document.getElementById("searchInput").value;
+    var paginationLink = document.querySelector('.page-link[asp-route-pageNumber="' + pageNumber + '"]');
+    var href = paginationLink.getAttribute("href");
+    paginationLink.setAttribute("href", href + "&searchQuery=" + encodeURIComponent(searchQuery));
+}
+</script>

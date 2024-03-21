@@ -1,0 +1,12 @@
+﻿<div asp-validation-summary="All"></div>
+<form asp-controller="Search" asp-action="SearchQuery" class="form-control border-0" onsubmit="showLoadingAlert()">
+    <input type="search" name="searchQuery" placeholder="Search for posts" required />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<script type="text/javascript">
+    function showLoadingAlert()
+    {
+        alert("Loading the relevant posts if any...");
+    }
+</script>
